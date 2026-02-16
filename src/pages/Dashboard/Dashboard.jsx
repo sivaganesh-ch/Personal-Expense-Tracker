@@ -18,11 +18,11 @@ const Dashboard = () => {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
 
-                const summaryRes = await axios.get('http://localhost:5000/api/transactions/summary', config);
+                const summaryRes = await axios.get('https://personal-expense-tracker-mauve-eight.vercel.app/api/transactions/summary', config);
                 setSummary(summaryRes.data.summary);
                 setCategoryData(summaryRes.data.categoryBreakdown);
 
-                const recentRes = await axios.get('http://localhost:5000/api/transactions?limit=5', config);
+                const recentRes = await axios.get('https://personal-expense-tracker-mauve-eight.vercel.app/api/transactions?limit=5', config);
                 setRecentTransactions(recentRes.data.transactions);
             } catch (err) {
                 console.error("Error fetching dashboard data", err);

@@ -27,7 +27,7 @@ const TransactionList = () => {
                 endDate: filters.endDate,
             }).toString();
 
-            const { data } = await axios.get(`http://localhost:5000/api/transactions?${query}`, config);
+            const { data } = await axios.get(`https://personal-expense-tracker-mauve-eight.vercel.app/api/transactions?${query}`, config);
 
             if (reset || page === 1) {
                 setTransactions(data.transactions);
@@ -68,7 +68,7 @@ const TransactionList = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                await axios.delete(`http://localhost:5000/api/transactions/${id}`, config);
+                await axios.delete(`https://personal-expense-tracker-mauve-eight.vercel.app/api/transactions/${id}`, config);
                 fetchTransactions(true);
             } catch (err) {
                 alert('Failed to delete');
